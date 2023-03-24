@@ -5,8 +5,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DOCKER_IMAGE_NAME: jlesage/firefox
-  PLATFORMS: linux/amd64,linux/386,linux/arm/v7,linux/arm64/v8
+  DOCKER_IMAGE_NAME: eugenechen0514/firefox
+  PLATFORMS: linux/arm/v7
 
 on:
   push:
@@ -143,16 +143,16 @@ jobs:
           repository: ${{ env.DOCKER_IMAGE_NAME }}
           readme-filepath: DOCKERHUB.md
 
-  notification:
-    name: Notification
-    needs: [ build ]
-    runs-on: ubuntu-20.04
-    if: ${{ always() }}
-
-    steps:
-      - name: Pushover notification
-        uses: desiderati/github-action-pushover@v1
-        with:
-          job-status: ${{ needs.build.result }}
-          pushover-api-token: ${{ secrets.PUSHOVER_API_TOKEN }}
-          pushover-user-key: ${{ secrets.PUSHOVER_USER_KEY }}
+#  notification:
+#    name: Notification
+#    needs: [ build ]
+#    runs-on: ubuntu-20.04
+#    if: ${{ always() }}
+#
+#    steps:
+#      - name: Pushover notification
+#        uses: desiderati/github-action-pushover@v1
+#        with:
+#          job-status: ${{ needs.build.result }}
+#          pushover-api-token: ${{ secrets.PUSHOVER_API_TOKEN }}
+#          pushover-user-key: ${{ secrets.PUSHOVER_USER_KEY }}
