@@ -13,7 +13,7 @@ RUN gcc -static -o membarrier_check membarrier_check.c
 RUN strip membarrier_check
 
 # Pull base image.
-FROM eugenechen0514/ha_baseimage-gui:aarch64-base-3.15-v0.0.3
+FROM eugenechen0514/ha_baseimage-gui:aarch64-base-3.15-v0.0.2
 
 # Docker image version is provided via build arg.
 ARG DOCKER_IMAGE_VERSION=
