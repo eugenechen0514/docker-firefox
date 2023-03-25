@@ -55,17 +55,21 @@ RUN \
     del-pkg build-dependencies && \
     rm -rf /tmp/* /tmp/.[!.]*
 
+RUN \
+    apk update \
+
 # Install Firefox.
-#RUN \
-##    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-##            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-##            --upgrade firefox=${FIREFOX_VERSION}
-#     add-pkg firefox=${FIREFOX_VERSION}
 RUN \
 #    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
 #            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 #            --upgrade firefox=${FIREFOX_VERSION}
-     add-pkg firefox
+     add-pkg firefox=${FIREFOX_VERSION}
+
+#RUN \
+##    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+##            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+##            --upgrade firefox=${FIREFOX_VERSION}
+#     add-pkg firefox
 
 
 # Install extra packages.
@@ -82,8 +86,6 @@ RUN \
 #    find /usr/share/icons/Adwaita -type d -mindepth 1 -maxdepth 1 -not -name 16x16 -not -name scalable -exec rm -rf {} ';' && \
 #    true
 
-RUN \
-    apk update \
 
 RUN \
     apk add cantarell-fonts
