@@ -87,8 +87,8 @@ RUN \
 #    true
 
 
-RUN \
-    apk add cantarell-fonts
+#RUN \
+#    apk add cantarell-fonts
 
 RUN \
     add-pkg \
