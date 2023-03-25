@@ -83,12 +83,15 @@ RUN \
 #    true
 
 RUN \
-    add-pkg \
-        adwaita-icon-theme
+    apk update \
+
+RUN \
+    apk add cantarell-fonts
 
 RUN \
     add-pkg \
-        cantarell-font
+        adwaita-icon-theme
+
 RUN \
     add-pkg \
         xdotool
