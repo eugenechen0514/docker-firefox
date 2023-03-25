@@ -101,7 +101,7 @@ RUN \
 RUN \
     # Remove unneeded icons.
     find /usr/share/icons/Adwaita -type d -mindepth 1 -maxdepth 1 -not -name 16x16 -not -name scalable -exec rm -rf {} ';' && \
-    true \
+    true
 
 #RUN \
 #    add-pkg \
