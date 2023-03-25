@@ -69,18 +69,47 @@ RUN \
 
 
 # Install extra packages.
+#RUN \
+#    add-pkg \
+#        # Icons used by folder/file selection window (when saving as).
+#        adwaita-icon-theme \
+#        # A font is needed.
+#        font-cantarell \
+#        # The following package is used to send key presses to the X process.
+#        xdotool \
+#        && \
+#    # Remove unneeded icons.
+#    find /usr/share/icons/Adwaita -type d -mindepth 1 -maxdepth 1 -not -name 16x16 -not -name scalable -exec rm -rf {} ';' && \
+#    true
+
 RUN \
     add-pkg \
-        # Icons used by folder/file selection window (when saving as).
-        adwaita-icon-theme \
-        # A font is needed.
-        font-cantarell \
-        # The following package is used to send key presses to the X process.
-        xdotool \
-        && \
+        adwaita-icon-theme
+
+RUN \
+    add-pkg \
+        font-cantarell
+RUN \
+    add-pkg \
+        xdotool
+
+RUN \
     # Remove unneeded icons.
     find /usr/share/icons/Adwaita -type d -mindepth 1 -maxdepth 1 -not -name 16x16 -not -name scalable -exec rm -rf {} ';' && \
-    true
+    true \
+
+#RUN \
+#    add-pkg \
+#        # Icons used by folder/file selection window (when saving as).
+#        adwaita-icon-theme \
+#        # A font is needed.
+#        font-cantarell \
+#        # The following package is used to send key presses to the X process.
+#        xdotool \
+#        && \
+#    # Remove unneeded icons.
+#    find /usr/share/icons/Adwaita -type d -mindepth 1 -maxdepth 1 -not -name 16x16 -not -name scalable -exec rm -rf {} ';' && \
+#    true
 
 # Set default settings.
 RUN \
