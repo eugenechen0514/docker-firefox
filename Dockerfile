@@ -88,7 +88,7 @@ RUN \
 
 RUN \
     add-pkg \
-        font-cantarell
+        cantarell-font
 RUN \
     add-pkg \
         xdotool
