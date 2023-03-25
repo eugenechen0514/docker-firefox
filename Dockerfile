@@ -56,7 +56,7 @@ RUN \
     rm -rf /tmp/* /tmp/.[!.]*
 
 RUN \
-    apk update \
+    apk update
 
 # Install Firefox.
 RUN \
