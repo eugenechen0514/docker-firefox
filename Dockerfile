@@ -4,6 +4,8 @@
 # https://github.com/jlesage/docker-firefox
 #
 
+ARG BASEIMAGE=unknown
+
 # Build the membarrier check tool.
 FROM alpine:3.15 AS membarrier
 #FROM eugenechen0514/ha_baseimage:aarch64-base-3.15-v0.0.4 AS membarrier
@@ -15,7 +17,8 @@ RUN gcc -static -o membarrier_check membarrier_check.c
 RUN strip membarrier_check
 
 # Pull base image.
-FROM eugenechen0514/ha_baseimage-gui:aarch64-base-3.15-v0.0.5
+FROM ${BASEIMAGE}
+#FROM eugenechen0514/ha_baseimage-gui:aarch64-base-3.15-v0.0.5
 #FROM eugenechen0514/ha_baseimage-gui:amd64-base-3.15-v0.0.5
 
 # Docker image version is provided via build arg.

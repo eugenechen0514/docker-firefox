@@ -6,9 +6,9 @@ concurrency:
 
 env:
 #  DOCKER_IMAGE_NAME: eugenechen0514/firefox
-  DOCKER_IMAGE_NAME: eugenechen0514/firefox-armv7
+  DOCKER_IMAGE_NAME: eugenechen0514/firefox
 #  PLATFORMS: linux/amd64,linux/386
-  PLATFORMS: linux/arm/v7
+#  PLATFORMS: linux/arm/v7
 
 on:
   push:
@@ -22,6 +22,12 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        info:
+          - '{ "tag_prefix": "armv7",  "baseimage": "eugenechen0514/ha_baseimage-gui:aarch64-base-3.15-v0.0.5", "platforms": "linux/arm/v7" }'
+          - '{ "tag_prefix": "amd64",  "baseimage": "eugenechen0514/ha_baseimage-gui:amd64-base-3.15-v0.0.5", "platforms": "linux/amd64,linux/386" }'
 
     steps:
       - name: Free disk space
@@ -68,7 +74,7 @@ jobs:
             LABEL_VERSION=${VERSION:1}
           fi
           # Determine the Docker container tags.
-          TAGS="${{ env.DOCKER_IMAGE_NAME }}:${VERSION}"
+          TAGS="${{ env.DOCKER_IMAGE_NAME }}:${{ fromJSON(matrix.info).tag_prefix }}-${VERSION}"
           if [[ $GITHUB_REF =~ refs/tags/* ]]; then
             TAGS="$TAGS,${{ env.DOCKER_IMAGE_NAME }}:latest"
           fi
@@ -124,12 +130,13 @@ jobs:
         with:
           push: ${{ steps.prep.outputs.is_release == 'yes' }}
           provenance: false
-          platforms: ${{ env.PLATFORMS }}
+          platforms: ${{ fromJSON(matrix.info).platforms }}
           tags: ${{ steps.prep.outputs.tags }}
           build-args: |
+            BASEIMAGE=${{ fromJSON(matrix.info).baseimage }}
             DOCKER_IMAGE_VERSION=${{ steps.prep.outputs.label_version }}
-          cache-from: type=gha,scope=${{ env.DOCKER_IMAGE_NAME }}
-          cache-to: type=gha,mode=max,scope=${{ env.DOCKER_IMAGE_NAME }}
+          cache-from: type=gha,scope=${{ fromJSON(matrix.info).tag_prefix }}
+          cache-to: type=gha,mode=max,scope=${{ fromJSON(matrix.info).tag_prefix }}
 
       - name: Inspect
         if: ${{ steps.prep.outputs.is_release == 'yes' }}
