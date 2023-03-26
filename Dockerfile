@@ -94,8 +94,8 @@ RUN \
 #RUN \
 #    add-pkg font-cantarell
 
-RUN \
-    add-pkg terminus-font font-inconsolata font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra
+#RUN \
+#    add-pkg terminus-font font-inconsolata font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra
 
 RUN \
     add-pkg \
