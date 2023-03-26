@@ -8,7 +8,7 @@
 FROM eugenechen0514/ha_baseimage:aarch64-base-3.15-v0.0.4 AS membarrier
 WORKDIR /tmp
 COPY membarrier_check.c .
-RUN apk --no-cache add build-base linux-headers
+RUN add-pkg --no-cache add build-base linux-headers
 RUN gcc -static -o membarrier_check membarrier_check.c
 RUN strip membarrier_check
 
