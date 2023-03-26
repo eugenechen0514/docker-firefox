@@ -6,7 +6,7 @@ concurrency:
 
 env:
 #  DOCKER_IMAGE_NAME: eugenechen0514/firefox
-  DOCKER_IMAGE_NAME: eugenechen0514/firefox
+  DOCKER_IMAGE_NAME: eugenechen0514/ha_firefox
 #  PLATFORMS: linux/amd64,linux/386
 #  PLATFORMS: linux/arm/v7
 
