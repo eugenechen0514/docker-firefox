@@ -141,7 +141,7 @@ jobs:
       - name: Inspect
         if: ${{ steps.prep.outputs.is_release == 'yes' }}
         run: |
-          docker buildx imagetools inspect ${{ env.DOCKER_IMAGE_NAME }}:${{ steps.prep.outputs.version }}
+          docker buildx imagetools inspect ${{ env.DOCKER_IMAGE_NAME }}:${{ fromJSON(matrix.info).tag_prefix }}-${{ steps.prep.outputs.version }}
 
       - name: Dockerhub description
         if: ${{ steps.prep.outputs.release_type == 'standard' }}
