@@ -92,7 +92,7 @@ RUN \
 
 
 RUN \
-    add-pkg fonts-cantarell
+    apk fonts-cantarell
 
 RUN \
     add-pkg \
