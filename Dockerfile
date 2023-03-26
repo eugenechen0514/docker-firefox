@@ -92,7 +92,7 @@ RUN \
 
 
 RUN \
-    add-pkg font-cantarell
+    apk add --upgrade font-cantarell
 
 RUN \
     add-pkg \
