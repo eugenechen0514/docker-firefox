@@ -92,7 +92,7 @@ RUN \
 
 
 RUN \
-    add-pkg add font-cantarell
+    add-pkg font-cantarell
 
 RUN \
     add-pkg \
