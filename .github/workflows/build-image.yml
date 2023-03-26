@@ -5,9 +5,10 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DOCKER_IMAGE_NAME: eugenechen0514/firefox
-  PLATFORMS: linux/amd64,linux/386
-#  PLATFORMS: inux/arm/v7
+#  DOCKER_IMAGE_NAME: eugenechen0514/firefox
+  DOCKER_IMAGE_NAME: eugenechen0514/firefox-armv7
+#  PLATFORMS: linux/amd64,linux/386
+  PLATFORMS: linux/arm/v7
 
 on:
   push:
