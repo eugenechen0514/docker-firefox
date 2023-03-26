@@ -91,8 +91,11 @@ RUN \
 #    true
 
 
+#RUN \
+#    add-pkg font-cantarell
+
 RUN \
-    apk add --upgrade font-cantarell
+    apk add terminus-font font-inconsolata font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra
 
 RUN \
     add-pkg \
