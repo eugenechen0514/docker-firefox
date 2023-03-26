@@ -22,7 +22,7 @@ FROM eugenechen0514/ha_baseimage-gui:amd64-base-3.15-v0.0.5
 ARG DOCKER_IMAGE_VERSION=
 
 # Define software versions.
-#ARG FIREFOX_VERSION=109.0.1-r0
+ARG FIREFOX_VERSION=109.0.1-r0
 #ARG FIREFOX_VERSION=109.0.1
 ARG JSONLZ4_VERSION=c4305b8
 ARG LZ4_VERSION=1.8.1.2
@@ -63,17 +63,17 @@ RUN \
     apk update
 
 # Install Firefox.
-RUN \
-#    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-#            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-#            --upgrade firefox=${FIREFOX_VERSION}
-     add-pkg firefox=${FIREFOX_VERSION}
-
 #RUN \
 ##    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
 ##            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 ##            --upgrade firefox=${FIREFOX_VERSION}
-#     add-pkg firefox
+#     add-pkg firefox=${FIREFOX_VERSION}
+
+RUN \
+#    add-pkg --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+#            --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+#            --upgrade firefox=${FIREFOX_VERSION}
+     add-pkg firefox
 
 
 # Install extra packages.
